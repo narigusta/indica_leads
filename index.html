@@ -378,7 +378,7 @@ html=`
 <button onclick="proximo()">Avançar</button>
 `
 	
-else{	
+}else{	
 html=`
 <h2>Telefone de ${nomes[indicacaoAtual-1]}</h2>
 <input id="campo" placeholder="Ex: 31 9 9766 1546" onkeyup="mascaraTelefone(this)">
@@ -388,7 +388,24 @@ html=`
 }
 
 document.getElementById("conteudo").innerHTML=html
-	
+
+// Foca no input ou select automaticamente
+const inputAtual = document.querySelector("#conteudo input, #conteudo select");
+if(inputAtual){
+    inputAtual.focus();
+
+    // Permitir Enter
+    inputAtual.addEventListener("keydown", function(e){
+        if(e.key === "Enter"){
+            if(inputAtual.tagName.toLowerCase() === "select"){
+                salvarQtd();
+            } else {
+                proximo();
+            }
+        }
+    });
+}
+
 const inputAtual = document.querySelector("#conteudo input, #conteudo select");
 if(inputAtual){
 inputAtual.focus();  // faz o campo receber o foco automaticamente
