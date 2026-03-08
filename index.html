@@ -641,7 +641,25 @@ document.getElementById("confirmacao").innerHTML=`
 
 }
 function fecharPopup(){
+  // Fecha o popup
   document.getElementById("confirmacao").style.display = "none";
+
+  // Reseta variáveis do fluxo
+  etapa = 0;
+  nome = "";
+  primeiroNome = "";
+  qtd = 0;
+  indicacaoAtual = 1;
+  modo = "nome";
+  nomes = [];
+  telefones = [];
+
+  // Esconde progresso e porcentagem
+  document.getElementById("progress").style.display = "none";
+  document.getElementById("percent").style.display = "none";
+
+  // Volta para a primeira tela
+  tela();
 }
 function whatsapp(){
 
