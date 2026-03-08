@@ -121,12 +121,19 @@ align-items:center;
 justify-content:center;
 }
 
-.popup-box{
-background:white;
-width:90%;
-max-width:380px;
-border-radius:16px;
-padding:25px;
+.popup-box {
+  position: relative; /* necessário para posicionar o X dentro do box */
+}
+
+.fechar-popup {
+  position: absolute;
+  top: 12px;        /* distância do topo */
+  right: 12px;      /* distância da direita */
+  font-size: 20px;  /* tamanho do X */
+  font-weight: bold;
+  cursor: pointer;
+  color: #333;      /* cor do X */
+}
 }
 
 .lead-item{
@@ -616,21 +623,24 @@ function enviarWhatsAppAlternativo(){
 function agradecimento(){
 
 document.getElementById("confirmacao").innerHTML=`
-
 <div class="popup-box">
 
-<h2>Muito obrigado ${primeiroNome}!</h2>
-
-<p>Pessoas como você fazem nosso negócio ir mais longe.</p>
-
-<button onclick="whatsapp()">Finalizar</button>
-
+  <span class="fechar-popup" onclick="fecharPopup()">&times;</span>
+  
+  <h2>Muito obrigado ${primeiroNome}!</h2>
+  
+  <p>Pessoas como você fazem nosso negócio ir mais longe.</p>
+  
+  <button onclick="whatsapp()">Finalizar</button>
+  
 </div>
 
-`
+`;
 
 }
-
+function fecharPopup(){
+  document.getElementById("confirmacao").style.display = "none";
+}
 function whatsapp(){
 
 let msg=encodeURIComponent("Oi, acabei de fazer as indicações! 👍")
