@@ -371,28 +371,27 @@ html=`
 
 else{
 
-if(modo=="nome"){
-
+if(modo=="nome"){	
 html=`
 <h2>Nome do indicado ${indicacaoAtual}</h2>
-<input id="campo">
+<input id="campo" placeholder="Ex: João da Silva">
 <button onclick="proximo()">Avançar</button>
 `
-
-}else{
-
+	
+else{	
 html=`
 <h2>Telefone de ${nomes[indicacaoAtual-1]}</h2>
-<input id="campo" onkeyup="mascaraTelefone(this)">
+<input id="campo" placeholder="Ex: 31 9 9766 1546" onkeyup="mascaraTelefone(this)">
 <button onclick="proximo()">Avançar</button>
 `
-
 }
-
 }
 
 document.getElementById("conteudo").innerHTML=html
-
+	
+const inputAtual = document.querySelector("#conteudo input, #conteudo select");
+if(inputAtual){
+inputAtual.focus();  // faz o campo receber o foco automaticamente
 }
 
 function salvarNome(){
