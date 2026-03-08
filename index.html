@@ -104,12 +104,12 @@ container.innerHTML += `
 
 function enviar(){
 
-var seuNome = document.getElementById("seuNome").value;
+var indicador = document.getElementById("seuNome").value;
 
 var nomes = document.querySelectorAll(".nomeIndicado");
 var telefones = document.querySelectorAll(".telefoneIndicado");
 
-if(seuNome == ""){
+if(indicador == ""){
 alert("Digite seu nome");
 return;
 }
@@ -121,14 +121,15 @@ alert("Preencha todos os campos");
 return;
 }
 
-fetch("https://script.google.com/macros/s/AKfycbyb7SoUkrJALFNlW5gwAY4nNOWC4LebhUIuYSWfIOHvMVjxDcslPPI_TVz7Bo2dgubrdw/exec",{
+fetch("https://script.google.com/macros/s/AKfycbwgkdGF8h7507ZUWiQJ6vFRhz8zkFHLaFxPxyjV3kWcFHHcuEM4EayC3Tu39dG-SozVLw/exec",{
 
 method:"POST",
 
 body:JSON.stringify({
 
-nome:nomes[i].value,
-telefone:telefones[i].value
+nomeLead:nomes[i].value,
+telefone:telefones[i].value,
+indicador:indicador
 
 })
 
