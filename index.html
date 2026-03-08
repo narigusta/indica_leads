@@ -50,7 +50,7 @@ box-shadow:0 10px 40px rgba(0,0,0,0.2);
 @media (max-width:480px){
   body{
     justify-content: flex-start; /* alinha para o topo */
-    padding-top: 40px;           /* espaço do topo, ajustável */
+    padding-top: 100px;           /* espaço do topo, ajustável */
   }
 
   .app{
@@ -429,9 +429,9 @@ return
 }
 
 if(modo=="nome"){
-
-nomes.push(valor)
-modo="telefone"
+    nomes.push(valor.toUpperCase()); // <- transforma em maiúsculas antes de salvar
+    modo="telefone"
+}
 
 }else{
 
@@ -506,8 +506,8 @@ function editar(i){
 
 function salvarEdicao(){
 
-    const novoNome = document.getElementById("editNome").value
-    const novoTelefone = document.getElementById("editTelefone").value
+    const novoNome = document.getElementById("editNome").value.toUpperCase(); // maiúsculas
+	const novoTelefone = document.getElementById("editTelefone").value.toUpperCase(); // maiúsculas
 
     // Validação do telefone
     if(!telefoneValido(novoTelefone)){
