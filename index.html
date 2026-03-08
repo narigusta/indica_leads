@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Indique um amigo</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#f4f4f4;
+padding:40px;
+text-align:center;
+}
+
+.container{
+background:white;
+padding:30px;
+max-width:500px;
+margin:auto;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+input,select{
+width:100%;
+padding:10px;
+margin:10px 0;
+}
+
+button{
+background:#28a745;
+color:white;
+border:none;
+padding:12px;
+width:100%;
+font-size:16px;
+cursor:pointer;
+}
+
+.indicado{
+border-top:1px solid #ddd;
+margin-top:15px;
+padding-top:15px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Indique um amigo</h2>
+
+<input type="text" id="seuNome" placeholder="Seu nome">
+
+<select id="quantidade" onchange="criarCampos()">
+<option value="">Quantas pessoas vai indicar?</option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+</select>
+
+<div id="camposIndicados"></div>
+
+<button onclick="enviar()">Enviar Indicações</button>
+
+</div>
+
+<script>
+
+function criarCampos(){
+
+var qtd = document.getElementById("quantidade").value;
+var container = document.getElementById("camposIndicados");
+
+container.innerHTML="";
+
+for(let i=1;i<=qtd;i++){
+
+container.innerHTML += `
+<div class="indicado">
+
+<h3>Indicação ${i}</h3>
+
+<input type="text" class="nomeIndicado" placeholder="Nome do indicado">
+
+<input type="text" class="telefoneIndicado" placeholder="Telefone do indicado">
+
+</div>
+`;
+
+}
+
+}
+
+function enviar(){
+
+var seuNome = document.getElementById("seuNome").value;
+
+var nomes = document.querySelectorAll(".nomeIndicado");
+var telefones = document.querySelectorAll(".telefoneIndicado");
+
+if(seuNome == ""){
+alert("Digite seu nome");
+return;
+}
+
+for(let i=0;i<nomes.length;i++){
+
+if(nomes[i].value == "" || telefones[i].value == ""){
+alert("Preencha todos os campos");
+return;
+}
+
+fetch("https://script.google.com/macros/s/AKfycbyb7SoUkrJALFNlW5gwAY4nNOWC4LebhUIuYSWfIOHvMVjxDcslPPI_TVz7Bo2dgubrdw/exec",{
+
+method:"POST",
+
+body:JSON.stringify({
+
+nome:nomes[i].value,
+telefone:telefones[i].value
+
+})
+
+});
+
+}
+
+alert("Indicações enviadas com sucesso!");
+
+location.reload();
+
+}
+
+</script>
+
+</body>
+</html>
