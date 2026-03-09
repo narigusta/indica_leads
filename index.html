@@ -4,258 +4,336 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Indique um amigo</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box
+}
+
 body{
-  font-family:Poppins;
-  background:linear-gradient(135deg,#3a7bd5,#00d2ff);
-  min-height:100vh;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  padding:20px;
+font-family:Poppins;
+
+background:
+url("https://i.imgur.com/16UlxXk.png");
+
+background-size:cover;
+background-position:center;
+background-repeat:no-repeat;
+background-attachment:fixed;
+
+min-height:100vh;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:flex-start;
+padding:40px 20px;
+position:relative;
 }
-.logo{width:180px;margin-bottom:25px}
-.headline{font-size:12px;color:white;margin-bottom:30px;text-align:center;max-width:450px}
-.app{width:100%;max-width:420px;background:white;border-radius:15px;padding:30px;box-shadow:0 10px 40px rgba(0,0,0,0.2);}
+
+/* CONTROLE DE POSIÇÃO */
+
+.header{
+position:absolute;
+
+/* AJUSTE AQUI */
+
+top:50px;      /* subir ou descer */
+left:475px;     /* mover para esquerda/direita */
+
+display:flex;
+flex-direction:column;
+align-items:flex-start;
+}
+
+/* LOGO */
+
+.logo{
+width:160px;
+margin-bottom:10px
+
+}
+
+/* HEADLINE */
+
+.headline{
+font-size:12px;
+color:white;
+text-align:left;
+max-width:360px
+}
+
+/* APP BOX */
+
+.app{
+width:100%;
+max-width:420px;
+background:white;
+border-radius:15px;
+padding:30px;
+box-shadow:0 10px 40px rgba(0,0,0,0.25);
+margin-top:200px;
+}
+
+/* FOOTER */
+
+.footer{
+margin-top:40px;
+text-align:center;
+font-size:12px;
+opacity:0.9;
+color:white
+}
+
+/* ÍCONE SVG */
+
+.dev-icon{
+vertical-align:middle;
+margin-right:6px;
+opacity:0.9
+}
+
+.footer a{
+color:white;
+text-decoration:none;
+font-weight:600
+}
+
+.footer a:hover{
+text-decoration:underline
+}
+
+/* MOBILE */
+
 @media (max-width:480px){
-  body{justify-content:flex-start;padding-top:100px;}
-  .app{padding:25px;}
+
+body{
+background-position: center left -430px;
 }
-.progress{height:6px;background:#eee;border-radius:10px;overflow:hidden;margin-bottom:20px;display:none;}
-.bar{height:100%;width:0%;background:linear-gradient(90deg,#00c853,#64dd17);transition:.4s;}
-.percent{font-size:12px;color:#666;margin-bottom:25px;display:none;}
-h2{font-size:17px;margin-bottom:10px;color:#333}
-input,select{width:100%;padding:14px;border-radius:8px;border:1px solid #ddd;margin:15px 0;font-size:15px}
-button{width:100%;padding:14px;border:none;border-radius:8px;background:#00c853;color:white;font-size:16px;cursor:pointer}
-.secondary{background:#eee;color:#333;margin-top:10px}
-.popup{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);display:flex;align-items:center;justify-content:center}
-.popup-box{background:white;width:90%;max-width:380px;border-radius:16px;padding:25px;position: relative}
-.fechar-popup{position:absolute;top:12px;right:12px;font-size:20px;font-weight:bold;cursor:pointer;color:#333}
-.lead-item{padding:12px;border-bottom:1px solid #eee;display:flex;justify-content:space-between;align-items:center}
-.edit-btn{background:#f1f1f1;color:#333;padding:6px 10px;border-radius:6px;font-size:12px;cursor:pointer}
-.notificacao{position:fixed;top:20px;left:20px;right:20px;background:#ff5252;color:white;padding:14px 16px;border-radius:8px;font-size:14px;box-shadow:0 10px 25px rgba(0,0,0,0.2);opacity:0;transform:translateY(-20px);pointer-events:none;transition:all .35s ease;z-index:9999;display:flex;align-items:center;gap:10px}
-.notificacao.show{opacity:1;transform:translateY(0);}
+
+.header{
+top:50px;
+left:20px;
+}
+
+.logo{
+width:150px;
+}
+
+.app{
+padding:25px;
+margin-top:230px;
+}
+
+}
+
+/* PROGRESSO */
+
+.progress{
+height:6px;
+background:#eee;
+border-radius:10px;
+overflow:hidden;
+margin-bottom:20px;
+display:none
+}
+
+.bar{
+height:100%;
+width:0%;
+background:linear-gradient(90deg,#00c853,#64dd17);
+transition:.4s
+}
+
+.percent{
+font-size:12px;
+color:#666;
+margin-bottom:25px;
+display:none
+}
+
+/* TEXTOS */
+
+h2{
+font-size:17px;
+margin-bottom:10px;
+color:#333
+}
+
+/* INPUTS */
+
+input,select{
+width:100%;
+padding:14px;
+border-radius:8px;
+border:1px solid #ddd;
+margin:15px 0;
+font-size:15px
+}
+
+/* BOTÕES */
+
+button{
+width:100%;
+padding:14px;
+border:none;
+border-radius:8px;
+background:#00c853;
+color:white;
+font-size:16px;
+cursor:pointer
+}
+
+.secondary{
+background:#eee;
+color:#333;
+margin-top:10px
+}
+
+/* POPUPS */
+
+.popup{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.6);
+display:flex;
+align-items:center;
+justify-content:center
+}
+
+.popup-box{
+background:white;
+width:90%;
+max-width:380px;
+border-radius:16px;
+padding:25px;
+position:relative
+}
+
+.fechar-popup{
+position:absolute;
+top:12px;
+right:12px;
+font-size:20px;
+font-weight:bold;
+cursor:pointer;
+color:#333
+}
+
+/* LEADS */
+
+.lead-item{
+padding:12px;
+border-bottom:1px solid #eee;
+display:flex;
+justify-content:space-between;
+align-items:center
+}
+
+.edit-btn{
+background:#f1f1f1;
+color:#333;
+padding:6px 10px;
+border-radius:6px;
+font-size:12px;
+cursor:pointer
+}
+
+/* NOTIFICAÇÃO */
+
+.notificacao{
+position:fixed;
+top:20px;
+left:20px;
+right:20px;
+background:#ff5252;
+color:white;
+padding:14px 16px;
+border-radius:8px;
+font-size:14px;
+box-shadow:0 10px 25px rgba(0,0,0,0.2);
+opacity:0;
+transform:translateY(-20px);
+pointer-events:none;
+transition:all .35s ease;
+z-index:9999;
+display:flex;
+align-items:center;
+gap:10px
+}
+
+.notificacao.show{
+opacity:1;
+transform:translateY(0)
+}
+
 </style>
 </head>
+
 <body>
 
 <div class="notificacao" id="notificacao"></div>
+
+<!-- HEADER CONTROLÁVEL -->
+
+<div class="header">
+
 <img src="https://i.imgur.com/m0Rfd3K.png" class="logo">
+
 <div class="headline">
 <h1>Indique amigos que também podem se beneficiar dessa oportunidade.</h1>
 </div>
 
+</div>
+
 <div class="app">
-  <div class="progress" id="progress"><div class="bar" id="bar"></div></div>
-  <div class="percent" id="percent"></div>
-  <div id="conteudo"></div>
+
+<div class="progress" id="progress">
+<div class="bar" id="bar"></div>
 </div>
 
-<div id="confirmacao" class="popup" style="display:none">
-  <div class="popup-box">
-    <h2 id="tituloConfirm"></h2>
-    <div id="lista"></div>
-    <button onclick="enviar()">Sim, enviar</button>
-  </div>
+<div class="percent" id="percent"></div>
+
+<div id="conteudo"></div>
+
 </div>
 
-<div id="editarPopup" class="popup" style="display:none">
-  <div class="popup-box">
-    <h2>Editar indicação</h2>
-    <input id="editNome">
-    <input id="editTelefone">
-    <button onclick="salvarEdicao()">Salvar</button>
-  </div>
-</div>
+<footer class="footer">
+
+<svg class="dev-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" viewBox="0 0 24 24">
+<path d="M8 5L3 12L8 19M16 5L21 12L16 19M14 3L10 21"/>
+</svg>
+
+Desenvolvido por:
+<a href="https://instagram.com/gu.kasopi" target="_blank">
+Gustavo Kasopi
+</a>
+
+</footer>
 
 <script>
-let etapa=0, nome="", primeiroNome="", qtd=0, indicacaoAtual=1, modo="nome";
-let nomes=[], telefones=[], indiceEdicao=null;
 
-const NUMERO_CONSULTOR = "5531997661546";
-const NUMERO_WHATSAPP_FINAL = "5531997661546";
-const URL_GOOGLE_SCRIPT = "https://script.google.com/macros/s/AKfycbwhZnw4-ffZOzGooQTusfuoIfWFZwHt5JjUisB3BOGyL0t3lFMCKmpucKYsxfiEgrag5Q/exec";
-
-function notificar(msg){
-  let n=document.getElementById("notificacao");
-  n.innerHTML=`<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="white" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg><span>${msg}</span>`;
-  n.classList.add("show");
-  setTimeout(()=>{ n.classList.remove("show"); },3000);
-}
-
-function mascaraTelefone(input){
-  let v=input.value.replace(/\D/g,'');
-  if(v.length>11)v=v.slice(0,11);
-  if(v.length>2 && v.length<=3)v=v.replace(/(\d{2})(\d+)/,"$1 $2");
-  else if(v.length>3 && v.length<=7)v=v.replace(/(\d{2})(\d)(\d+)/,"$1 $2 $3");
-  else if(v.length>7)v=v.replace(/(\d{2})(\d)(\d{4})(\d+)/,"$1 $2 $3 $4");
-  input.value=v;
-}
-
-function telefoneValido(tel){return tel.replace(/\D/g,'').length==11;}
-
-function atualizarProgresso(){
-  let total=qtd*2, atual=(indicacaoAtual-1)*2;
-  if(modo=="telefone") atual++;
-  let p=(atual/total)*100;
-  document.getElementById("bar").style.width=p+"%";
-  document.getElementById("percent").innerText=Math.round(p)+"% concluído";
-}
+let etapa=0;
 
 function tela(){
-  if(qtd>0) atualizarProgresso();
-  let html="";
-  if(etapa==0){
-    html=`<h2>Olá, qual o seu nome?</h2><input id="nome" placeholder="Ex: João da Silva"><button onclick="salvarNome()">Avançar</button>`;
-  } else if(etapa==1){
-    html=`<h2><center>${primeiroNome}, isso leva apenas 2 minutos, tá bom?</center></h2><button onclick="proxima()">Avançar</button>`;
-  } else if(etapa==2){
-    html=`<h2>${primeiroNome}, quantas pessoas vai indicar?</h2><select id="qtd"><option value="">Selecione</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select><button onclick="salvarQtd()">Avançar</button>`;
-  } else {
-    if(modo=="nome"){
-      html=`<h2>Nome do indicado ${indicacaoAtual}</h2><input id="campo" placeholder="Ex: João da Silva"><button onclick="proximo()">Avançar</button>`;
-    } else {
-      html=`<h2>Telefone de ${nomes[indicacaoAtual-1]}</h2><input id="campo" placeholder="Ex: 31 9 9766 1546" onkeyup="mascaraTelefone(this)"><button onclick="proximo()">Avançar</button>`;
-    }
-  }
-  document.getElementById("conteudo").innerHTML=html;
 
-  const inputAtual=document.querySelector("#conteudo input, #conteudo select");
-  if(inputAtual){
-      inputAtual.focus();
-      inputAtual.addEventListener("keydown", function(e){
-          if(e.key==="Enter"){
-              if(inputAtual.tagName.toLowerCase()==="select") salvarQtd();
-              else proximo();
-          }
-      });
-  }
-}
+let html=`<h2>Olá, qual o seu nome?</h2>
+<input placeholder="Ex: João da Silva">
+<button>Avançar</button>`;
 
-function salvarNome(){
-  nome=document.getElementById("nome").value;
-  if(nome==""){ notificar("Digite seu nome"); return; }
-  primeiroNome=nome.split(" ")[0];
-  etapa++; tela();
-}
+document.getElementById("conteudo").innerHTML=html;
 
-function salvarQtd(){
-  qtd=parseInt(document.getElementById("qtd").value);
-  if(!qtd){ notificar("Selecione quantas pessoas deseja indicar"); return; }
-  document.getElementById("progress").style.display="block";
-  document.getElementById("percent").style.display="block";
-  etapa++; tela();
-}
-
-function proxima(){etapa++; tela();}
-
-function proximo(){
-  let valor=document.getElementById("campo").value;
-  if(valor==""){ notificar("Preencha o campo"); return; }
-  if(modo=="nome"){ nomes.push(valor.toUpperCase()); modo="telefone"; }
-  else{
-    if(!telefoneValido(valor)){ notificar(`${primeiroNome}, por favor digite um telefone válido`); return; }
-    telefones.push(valor);
-    if(indicacaoAtual<qtd){ indicacaoAtual++; modo="nome"; } else { confirmar(); return; }
-  }
-  tela();
-}
-
-function confirmar(){
-  let lista="";
-  for(let i=0;i<nomes.length;i++){
-    lista+=`<div class="lead-item"><div><strong>${nomes[i]}</strong><br>${telefones[i]}</div><div class="edit-btn" onclick="editar(${i})">Editar</div></div>`;
-  }
-  document.getElementById("tituloConfirm").innerText=`${primeiroNome}, os dados estão corretos?`;
-  document.getElementById("lista").innerHTML=lista;
-  document.getElementById("confirmacao").style.display="flex";
-}
-
-function editar(i){
-  indiceEdicao=i;
-  const inputNome=document.getElementById("editNome");
-  const inputTelefone=document.getElementById("editTelefone");
-  inputNome.value=nomes[i];
-  inputTelefone.value=telefones[i];
-  inputTelefone.onkeyup=function(){ mascaraTelefone(this); }
-  document.getElementById("editarPopup").style.display="flex";
-}
-
-function salvarEdicao(){
-  const novoNome=document.getElementById("editNome").value.toUpperCase();
-  const novoTelefone=document.getElementById("editTelefone").value.toUpperCase();
-  if(!telefoneValido(novoTelefone)){ notificar(`${primeiroNome}, por favor digite um telefone válido`); return; }
-  nomes[indiceEdicao]=novoNome;
-  telefones[indiceEdicao]=novoTelefone;
-  document.getElementById("editarPopup").style.display="none";
-  confirmar();
-}
-
-async function enviar(){
-  const btnEnviar=document.querySelector("#confirmacao button");
-  btnEnviar.disabled=true; btnEnviar.innerText="Enviando...";
-  document.querySelectorAll(".app input, .app select, .app button").forEach(el=>{ el.disabled=true; });
-  let erro=false;
-  for(let i=0;i<nomes.length;i++){
-    try{
-      const response=await fetch(URL_GOOGLE_SCRIPT,{method:"POST",body:JSON.stringify({nomeLead:nomes[i],telefone:telefones[i],indicador:nome})});
-      if(!response.ok){ erro=true; console.error("Erro ao enviar lead:", nomes[i]); }
-    } catch(e){ erro=true; console.error("Erro de rede ao enviar lead:", nomes[i], e); }
-  }
-  if(erro){
-    notificar("Houve um problema ao enviar as indicações. Você pode enviá-las diretamente para o consultor.");
-    const lista=document.getElementById("lista");
-    const btnEnviar=document.querySelector("#confirmacao button");
-    btnEnviar.style.display="none";
-    if(!document.getElementById("botaoAlternativo")){
-      const botaoAlt=document.createElement("button");
-      botaoAlt.id="botaoAlternativo";
-      botaoAlt.innerText="Enviar diretamente para o consultor";
-      botaoAlt.style.background="#ff9800";
-      botaoAlt.style.marginTop="10px";
-      botaoAlt.onclick=enviarWhatsAppAlternativo;
-      lista.appendChild(botaoAlt);
-    }
-    document.querySelectorAll(".app input, .app select, .app button").forEach(el=>{ el.disabled=false; });
-    return;
-  }
-  agradecimento();
-}
-
-function enviarWhatsAppAlternativo(){
-  let msg=`Olá, estou enviando minhas indicações:\n\n`;
-  for(let i=0;i<nomes.length;i++) msg+=`${i+1}. ${nomes[i]} - ${telefones[i]}\n`;
-  msg=encodeURIComponent(msg);
-  window.open(`https://wa.me/${NUMERO_CONSULTOR}?text=${msg}`,"_blank");
-}
-
-function agradecimento(){
-  document.getElementById("confirmacao").innerHTML=`
-  <div class="popup-box">
-    <span class="fechar-popup" onclick="fecharPopup()">&times;</span>
-    <h2>Muito obrigado ${primeiroNome}!</h2>
-    <p>Pessoas como você fazem nosso negócio ir mais longe.</p>
-    <button onclick="whatsapp()">Finalizar</button>
-  </div>`;
-}
-
-function fecharPopup(){
-  document.getElementById("confirmacao").style.display="none";
-  etapa=0; nome=""; primeiroNome=""; qtd=0; indicacaoAtual=1; modo="nome"; nomes=[]; telefones=[];
-  document.getElementById("progress").style.display="none";
-  document.getElementById("percent").style.display="none";
-  tela();
-}
-
-function whatsapp(){
-  let msg=encodeURIComponent("Oi, acabei de fazer as indicações! 👍");
-  window.location.href="https://wa.me/"+NUMERO_WHATSAPP_FINAL+"?text="+msg;
 }
 
 tela();
+
 </script>
 
 </body>
